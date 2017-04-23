@@ -25,10 +25,10 @@
             <a class="navbar-brand" href="#">
               Part II Targets
             </a>
-            <p class="navbar-text"><a href ="http://localhost:3000/flexible/square/new">Square Form</a></p>
-            <p class="navbar-text"><a href ="http://localhost:3000/flexible/square_root/new">Square Root Form</a></p>
-            <p class="navbar-text"><a href ="http://localhost:3000/flexible/payment/new">Payment Form</a></p>
-            <p class="navbar-text"><a href ="http://localhost:3000/flexible/random/new">Random Form</a></p>
+            <p class="navbar-text"><a href ="http://localhost:3000/square/new">Square Form</a></p>
+            <p class="navbar-text"><a href ="http://localhost:3000/square_root/new">Square Root Form</a></p>
+            <p class="navbar-text"><a href ="http://localhost:3000/payment/new">Payment Form</a></p>
+            <p class="navbar-text"><a href ="http://localhost:3000/random/new">Random Form</a></p>
           </div>
 
           <div class="navbar-header">
@@ -52,7 +52,7 @@
           <%= @min %>
         </div>
 
-        <div><h3>Maximun</h3></div>
+        <div><h3>Maximum</h3></div>
         <div>
           <%= @max %>
         </div>
@@ -64,5 +64,8 @@
 
 
         <div>
-          <h4><a href = "http://localhost:3000/payment/new">Pick another random number</a></h4>
+          <h4><a href = "http://localhost:3000/random/new">Pick another random number</a></h4>
+        </div>
+        <div>
+          <h4><a href = "http://localhost:3000/random/results/?user_min=<%= @min %>&user_max=<%= @max %>">Recalculate</a></h4>
         </div>

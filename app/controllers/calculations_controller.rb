@@ -8,7 +8,7 @@ class CalculationsController < ApplicationController
   def flex_square_root_5
     # Parameters: {"num"=>"howdy"}
     @user_number = params["num"].to_f
-    @squareroot = Math.sqrt(@user_number)
+    @squareroot = Math.sqrt(@user_number).round(2)
     render("calculations/flex_square_root_5.html.erb")
   end
   def flex_payment
@@ -16,11 +16,19 @@ class CalculationsController < ApplicationController
     int = params["int"].to_f
     @interest = int/100
     @interest_month = @interest/1200
-    yr = params["yr"].to_f
-    @year = yr*12
+    @year = params["yr"].to_f
+    @months = @year*12
     @principle = params["prp"].to_f
-    @month = @principle*((@interest_month)/(1-(1+@interest_month)**-@year))
-    @monthly=@month.round(0)
+    @month = @principle*((@interest_month)/(1-(1+@interest_month)**-@months))
+
+    # def number_to_currency(@month)
+    #   number_to_currency(@month, :unit => "R$ ", :separator => ",", :delimiter => ".")
+    # end/
+
+
+    @monthly = helpers.number_to_currency(@month,:precision => 2)
+
+
 
     render("calculations/flex_payment.html.erb")
   end
@@ -64,14 +72,15 @@ class CalculationsController < ApplicationController
   end
   def payment_results
 
-    apr = params[:user_apr].to_f
-    @apr = apr
+    @apr = params[:user_apr].to_f
+    @apr2 = helpers.number_to_percentage(@apr,:precision => 4)
     @interest_month = @apr/1200
     @yr = params[:user_years].to_f
     @year = @yr*12
-    @principle = params[:user_principal].to_f
-    @month = @principle*((@interest_month)/(1-(1+@interest_month)**-@year))
-    @monthly=@month.round(2)
+    principle = params[:user_principal].to_f
+    @principle = helpers.number_to_currency(principle,:precision => 1)
+    @month = principle*((@interest_month)/(1-(1+@interest_month)**-@year))
+    @monthly = helpers.number_to_currency(@month,:precision => 2)
     render("calculations/payment_results.html.erb")
 
   end
