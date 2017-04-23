@@ -42,35 +42,72 @@
 
         </nav>
 
-<h1>Word Count Results</h1>
+<h1>Descriptive Statistics Results</h1>
 
 <div>
-  <h3>Text</h3>
+  <h3>Numbers</h3>
 </div>
 <div>
-  <%= @text %>
-</div>
-
-<div><h3>Word Count</h3></div>
-<div>
-  <%= @word_count %>
+  <%= @numbers %>
 </div>
 
-<div><h3>Character Count (with spaces)</h3></div>
+<div><h3>Sorted Numbers</h3></div>
 <div>
-  <%=   @character_count_with_spaces%>
+  <%= @sorted_numbers %>
 </div>
 
-<div><h3>Character Count (without spaces)</h3></div>
+<div><h3>Count</h3></div>
 <div>
-  <%= @character_count_without_spaces %>
+  <%=   @count%>
 </div>
 
-<div><h3>Occurences of <%= @special_word %></h3></div>
+<div><h3>Minimum</h3></div>
 <div>
-  <%=   @occurrences  %>
+  <%= @minimum%>
+</div>
+
+<div><h3>Maximum</h3></div>
+<div>
+  <%= @maximum %>
+</div>
+
+<div><h3>Range</h3></div>
+<div>
+  <%= @range %>
+</div>
+
+<div><h3>Median</h3></div>
+<div>
+  <%= @median %>
+</div>
+
+
+
+<div><h3>Sum</h3></div>
+<div>
+  <%= @sum %>
+</div>
+
+<div><h3>Mean</h3></div>
+<div>
+  <%= @mean %>
+</div>
+
+<div><h3>Variance</h3></div>
+<div>
+  <%= @variance %>
+</div>
+
+<div><h3>Standard Deviation</h3></div>
+<div>
+  <%= @standard_deviation %>
+</div>
+
+<div><h3>Mode</h3></div>
+<div>
+  <%= @mode %>
 </div>
 
 <div>
-  <h4><a href = "http://localhost:3000/word_count/new">Process more text</a></h4>
+  <h4><a href = "http://localhost:3000/descriptive_statistics/new">Process more text</a></h4>
 </div>

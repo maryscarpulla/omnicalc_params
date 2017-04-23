@@ -41,36 +41,17 @@
 
 
         </nav>
+        
+        <h1>Stats Calculation</h1>
 
-<h1>Word Count Results</h1>
+        <form action="/descriptive_statistics/results">
+          <div>
+            <label>
+              Numbers
+            </label>
+            <input type = "numbers" name = "user_stat">
 
-<div>
-  <h3>Text</h3>
-</div>
-<div>
-  <%= @text %>
-</div>
+          </div>
 
-<div><h3>Word Count</h3></div>
-<div>
-  <%= @word_count %>
-</div>
-
-<div><h3>Character Count (with spaces)</h3></div>
-<div>
-  <%=   @character_count_with_spaces%>
-</div>
-
-<div><h3>Character Count (without spaces)</h3></div>
-<div>
-  <%= @character_count_without_spaces %>
-</div>
-
-<div><h3>Occurences of <%= @special_word %></h3></div>
-<div>
-  <%=   @occurrences  %>
-</div>
-
-<div>
-  <h4><a href = "http://localhost:3000/word_count/new">Process more text</a></h4>
-</div>
+          <button>Calculate descriptive statistics</button>
+        </form>

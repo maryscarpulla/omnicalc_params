@@ -136,6 +136,62 @@ class CalculationsController < ApplicationController
 
   end
 
+
+  def descriptive_statistics
+    render("calculations/descriptive_statistics_form.html.erb")
+  end
+  def descriptive_statistics_results
+
+    @numbers = params[:user_stat].gsub(',','').split.map(&:to_f)
+
+    # ================================================================================
+    # Your code goes below.
+    # The numbers the user input are in the array @numbers.
+    # ================================================================================
+
+    @sorted_numbers = @numbers.sort
+
+    @count = @numbers.count
+
+    @minimum = @sorted_numbers. fetch(0)
+
+    @maximum = @sorted_numbers.max
+
+    @range = @maximum-@minimum
+
+    len = @sorted_numbers.length
+    @median = (@sorted_numbers[(len -1)/2] + @sorted_numbers[len/2])/2.0
+
+    @sum = @numbers.sum
+
+    @mean = @numbers.sum/@count
+
+
+    mean = @mean
+    numbers = @numbers
+    squared_sum =  []
+
+    @numbers.each do |num|
+      square_diff = (num - mean)*(num - mean)
+      squared_sum.push(square_diff)
+    end
+
+    @variance = squared_sum.sum/@count
+
+    @standard_deviation = Math.sqrt(@variance)
+
+
+
+    freq = numbers.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    @mode = numbers.max_by { |v| freq[v] }
+
+
+
+    render("calculations/descriptive_statistics_results.html.erb")
+
+  end
+
+
   # def wine_home
   #   render("calculations/wine_home.html.erb")
   # end
